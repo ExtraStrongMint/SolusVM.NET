@@ -77,7 +77,7 @@ namespace SolusVM
             return result;
         }
 
-        public dynamic ParseResult(string result)
+        public SolusResponse ParseResult(string result)
         {
             byte[] byteArray = Encoding.UTF8.GetBytes(result);
             MemoryStream stream = new MemoryStream(byteArray);

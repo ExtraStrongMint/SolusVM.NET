@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolusVM.NET", "SolusVM.NET\SolusVM.NET.csproj", "{40ABED5A-A0F7-40F2-B01D-CA7FDC751979}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolusViewer.WPF", "..\SolusViewer.WPF\SolusViewer.WPF\SolusViewer.WPF.csproj", "{CAF72D60-E5E5-4029-B0C2-27D0B4EC57CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{40ABED5A-A0F7-40F2-B01D-CA7FDC751979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40ABED5A-A0F7-40F2-B01D-CA7FDC751979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40ABED5A-A0F7-40F2-B01D-CA7FDC751979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF72D60-E5E5-4029-B0C2-27D0B4EC57CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF72D60-E5E5-4029-B0C2-27D0B4EC57CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF72D60-E5E5-4029-B0C2-27D0B4EC57CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF72D60-E5E5-4029-B0C2-27D0B4EC57CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

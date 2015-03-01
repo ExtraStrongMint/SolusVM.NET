@@ -30,26 +30,8 @@ namespace SolusVM
                 PostFields.Add("status", "true");
             PostFields.Add("action", action.ToString().ToLower());
 
-            using(HttpClient client = new HttpClient())
-            {
-                HttpContent content = new FormUrlEncodedContent(PostFields);
-                ResetPostFields();
-
-                client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "SolusVM.NET 0.0.1.0 - github.com/ExtraStrongMint");
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-                content.Headers.ContentType.CharSet = "UTF-8";
-                client.DefaultRequestHeaders.ExpectContinue = false;
-
-                try
-                {
-                    HttpResponseMessage response = client.PostAsync(URI, content).Result;
-                    client.Dispose();
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex) { return null; }
-            }
+            return await PostData();
         }
-
         internal async Task<string> Do(SolusClient.eAction action, SolusClient.eInfoAction infoAction, bool vmstat)
         {
             List<SolusClient.eInfoAction> infoActions = new List<SolusClient.eInfoAction>()
@@ -59,8 +41,6 @@ namespace SolusVM
             
             return await Do(action, infoActions, vmstat);
         }
-
-        // TODO: clean this up
         internal async Task<string> Do(SolusClient.eAction action, List<SolusClient.eInfoAction> infoActions, bool vmstat)
         {
 
@@ -90,17 +70,18 @@ namespace SolusVM
                         PostFields.Add("mem", "true");
                         break;
                     default:
-                        PostFields.Add("bw", "true");
-                        PostFields.Add("hdd", "true");
-                        PostFields.Add("ipaddr", "true");
-                        PostFields.Add("mem", "true");
+                        // default should be nothing
                         break;
                 }
             }
 
             PostFields.Add("action", action.ToString().ToLower());
 
+            return await PostData();
+        }
 
+        private async Task<string> PostData()
+        {
             using (HttpClient client = new HttpClient())
             {
                 HttpContent content = new FormUrlEncodedContent(PostFields);
@@ -117,10 +98,11 @@ namespace SolusVM
                     client.Dispose();
                     return await response.Content.ReadAsStringAsync();
                 }
-                catch (Exception ex) { return null; }
+                catch (Exception ex) {
+                    return null;
+                }
             }
         }
-
         private void ResetPostFields()
         {
             PostFields.Clear();

@@ -48,7 +48,7 @@ namespace SolusVM
             Port = port;
             SSL = ssl;
 
-            GoReady();
+            BuildURI();
         }
         #endregion
 
@@ -88,10 +88,11 @@ namespace SolusVM
         #endregion
 
         #region Private Functions
-        private void GoReady()
+        private void BuildURI()
         {
             Uri uri;
-
+            // TODO we should not assume anything here... what if they want to put http:// | https:// ???
+            //    should add some detection logic for that
             uri = new Uri(String.Format("{0}://{1}:{2}/api/client/command.php", (SSL.IsTrue()) ? "https" : "http", URI, Port));
 
             Request = new Requests(uri, API_KEY, API_HASH);
